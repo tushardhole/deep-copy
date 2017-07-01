@@ -1,0 +1,14 @@
+{
+  "name": "deep-copy",
+  "version": "1.0.0",
+  "description": "Utility to deep copy objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest test"
+  },
+  "author": "tushar dhole",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^20.0.4"
+  }
+}
