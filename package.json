@@ -8,6 +8,10 @@
   },
   "author": "tushar dhole",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tushardhole/deep-copy.git"
+  },
   "devDependencies": {
     "jest": "^20.0.4"
   }
