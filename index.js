@@ -1,15 +1,28 @@
-const doDeepCopy = (src) => {
+function cloneValue(value) {
+  if (value instanceof Array) {
+    return copyArray(value)
+  } else if (value instanceof Object) {
+    return copyObject(value);
+  } else {
+    return value
+  }
+}
+const copyObject = (src) => {
   const dest = {};
   Object.keys(src).forEach(key => {
-    if (typeof src[key] === 'object') {
-      dest[key] = doDeepCopy(src[key]);
-    } else {
-      dest[key] = src[key]
-    }
+    dest[key] = cloneValue(src[key]);
   });
   return dest
 };
 
-Object.prototype.deepCopy = src => {
-  return doDeepCopy(src);
+const copyArray = srcArr => {
+  const targetArray = [];
+  srcArr.forEach(element => {
+    targetArray.push(cloneValue(element));
+  });
+  return targetArray
+};
+
+Object.prototype.depthCopy = src => {
+  return copyObject(src);
 };
