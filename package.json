@@ -1,6 +1,6 @@
 {
   "name": "depth-copy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utility to deep copy JS objects",
   "main": "index.js",
   "scripts": {
