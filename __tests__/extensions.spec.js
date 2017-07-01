@@ -2,21 +2,21 @@ require("depth-copy");
 jest.enableAutomock();
 jest.unmock("../index.js");
 
-describe('object extensions', () => {
-  it('should perform deep copy', () => {
-    const grandFather = {
-      name: "Rockys father",
+describe('depth copy', () => {
+  it('should be done for simple objects', () => {
+    const rockysGrandFather = {
+      name: "Rockys grand father",
       father: "Don't know :("
     };
 
-    const father = {
+    const rockysFather = {
       name: "Rockys Father",
-      father: grandFather
+      father: rockysGrandFather
     };
 
     const rocky = {
       name: "Rocky",
-      father: father
+      father: rockysFather
     };
 
     const rockyClone = Object.depthCopy(rocky);
@@ -25,41 +25,43 @@ describe('object extensions', () => {
     expect(rockyClone).toEqual(rocky)
   });
 
-  it('should perform deep copy with arrays', () => {
-    const rocky = {
-      name: "Rocky",
-      roomNo: [10, 11]
-    };
+  describe('for arrays', () => {
+    it('should perform deep copy with arrays', () => {
+      const rocky = {
+        name: "Rocky",
+        roomNo: [10, 11]
+      };
 
-    const rockyClone = Object.depthCopy(rocky);
-    expect(rockyClone.roomNo).not.toBe(rocky.roomNo);
-    expect(rockyClone).toEqual(rocky)
+      const rockyClone = Object.depthCopy(rocky);
+      expect(rockyClone.roomNo).not.toBe(rocky.roomNo);
+      expect(rockyClone).toEqual(rocky)
+    });
+
+    it('should perform deep copy with nested arrays', () => {
+      const rocky = {
+        name: "Rocky",
+        roomNo: [[10, 10], [11, 11]]
+      };
+
+      const rockyClone = Object.depthCopy(rocky);
+      expect(rockyClone.roomNo).not.toBe(rocky.roomNo);
+      expect(rockyClone).toEqual(rocky)
+    });
+
+    it('should perform deep copy with array of objects', () => {
+      const rocky = {
+        name: "Rocky",
+        roomNo: [
+          {
+            wing: "C1",
+            number: [11, 12]
+          }
+        ]
+      };
+
+      const rockyClone = Object.depthCopy(rocky);
+      expect(rockyClone.roomNo).not.toBe(rocky.roomNo);
+      expect(rockyClone).toEqual(rocky)
+    })
   });
-
-  it('should perform deep copy with nested arrays', () => {
-    const rocky = {
-      name: "Rocky",
-      roomNo: [[10, 10], [11, 11]]
-    };
-
-    const rockyClone = Object.depthCopy(rocky);
-    expect(rockyClone.roomNo).not.toBe(rocky.roomNo);
-    expect(rockyClone).toEqual(rocky)
-  });
-
-  it('should perform deep copy with array of objects', () => {
-    const rocky = {
-      name: "Rocky",
-      roomNo: [
-        {
-          wing: "C1",
-          number: [11, 12]
-        }
-      ]
-    };
-
-    const rockyClone = Object.depthCopy(rocky);
-    expect(rockyClone.roomNo).not.toBe(rocky.roomNo);
-    expect(rockyClone).toEqual(rocky)
-  })
 });
