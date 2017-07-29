@@ -1,6 +1,4 @@
-require("depth-copy");
-jest.enableAutomock();
-jest.unmock("../index.js");
+require('depth-copy');
 
 describe('depth copy', () => {
   it('should be done for simple objects', () => {
@@ -64,4 +62,24 @@ describe('depth copy', () => {
       expect(rockyClone).toEqual(rocky)
     })
   });
+
+  it('should perform deep copy for Number type', () => {
+    const n = new Number(10);
+    const nClone = Object.depthCopy(n);
+    expect(nClone).not.toBe(n);
+    expect(nClone).toEqual(n)
+  });
+
+  it('should perform deep copy for Boolean type', () => {
+    const bool = new Boolean(false);
+    const boolClone = Object.depthCopy(bool);
+    expect(boolClone).not.toBe(bool);
+    expect(boolClone).toEqual(bool)
+  });
+
+  it('should perform shallow for Function/Unsupported type', () => {
+    const foo = new Function();
+    const fooClone = Object.depthCopy(foo);
+    expect(fooClone).toBe(foo);
+  })
 });
