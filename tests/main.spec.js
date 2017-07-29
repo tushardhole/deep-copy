@@ -63,23 +63,47 @@ describe('depth copy', () => {
     })
   });
 
-  it('should perform deep copy for Number type', () => {
-    const n = new Number(10);
-    const nClone = Object.depthCopy(n);
-    expect(nClone).not.toBe(n);
-    expect(nClone).toEqual(n)
-  });
+  describe("individual for data types", () => {
+    it('should perform deep copy for Number type', () => {
+      var n = 10;
+      var nClone = Object.depthCopy(n);
+      expect(nClone).not.toBe(n);
+      expect(nClone).toEqual(n)
 
-  it('should perform deep copy for Boolean type', () => {
-    const bool = new Boolean(false);
-    const boolClone = Object.depthCopy(bool);
-    expect(boolClone).not.toBe(bool);
-    expect(boolClone).toEqual(bool)
-  });
+      var n = new Number(10);
+      var nClone = Object.depthCopy(n);
+      expect(nClone).not.toBe(n);
+      expect(nClone).toEqual(n)
+    });
 
-  it('should perform shallow for Function/Unsupported type', () => {
-    const foo = new Function();
-    const fooClone = Object.depthCopy(foo);
-    expect(fooClone).toBe(foo);
-  })
+    it('should perform deep copy for Boolean type', () => {
+      var bool = false;
+      var boolClone = Object.depthCopy(bool);
+      expect(boolClone).not.toBe(bool);
+      expect(boolClone).toEqual(bool)
+
+      bool = new Boolean(false);
+      boolClone = Object.depthCopy(bool);
+      expect(boolClone).not.toBe(bool);
+      expect(boolClone).toEqual(bool)
+    });
+
+    it('should perform deep copy for String type', () => {
+      var foo = "foo";
+      var foolClone = Object.depthCopy(foo);
+      expect(foolClone).not.toBe(foo);
+      expect(foolClone).toEqual(foo)
+
+      var foo = new String("foo");
+      var foolClone = Object.depthCopy(foo);
+      expect(foolClone).not.toBe(foo);
+      expect(foolClone).toEqual(foo)
+    });
+
+    it('should perform shallow for Function/Unsupported type', () => {
+      const foo = new Function();
+      const fooClone = Object.depthCopy(foo);
+      expect(fooClone).toBe(foo);
+    })
+  });
 });
