@@ -1,5 +1,5 @@
 const copyNumber = srcNumber => {
-  return new Number(parseInt(srcNumber.toString()));
+  return new Number(srcNumber.toString());
 };
 
 export default copyNumber;

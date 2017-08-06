@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest test",
     "compile": "rimraf lib/* && babel src -d lib",
-    "prepublish": "npm run compile"
+    "prepublish": "npm run compile",
+    "lint": "eslint --ext .js  ./src"
   },
   "author": "Tushar Dhole",
   "license": "ISC",
@@ -17,8 +18,11 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.3.0",
+    "eslint-config-google": "^0.9.1",
     "jest": "^20.0.4",
     "rimraf": "^2.6.1"
   },

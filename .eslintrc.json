@@ -1,0 +1,22 @@
+{
+    "parser": "babel-eslint",
+    "extends": "google",
+    "rules": {
+        "no-invalid-this": "off",
+        "require-jsdoc": "off",
+        "one-var": "off",
+        "no-var": 2,
+        "quotes": "off",
+        "arrow-parens": "off",
+        "no-new-wrappers": "off",
+        "no-extend-native": "off"
+    },
+    "globals": {
+        "jest": false,
+        "jasmine": false,
+        "it": false,
+        "describe": false,
+        "expect": false,
+        "beforeEach": false
+    }
+}

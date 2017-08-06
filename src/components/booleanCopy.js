@@ -1,5 +1,5 @@
 const copyBoolean = (src) => {
-  return new Boolean(JSON.parse(src.toString()));
+  return new Boolean(src.valueOf());
 };
 
 export default copyBoolean;

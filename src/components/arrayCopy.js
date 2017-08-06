@@ -5,7 +5,7 @@ const copyArray = srcArr => {
   srcArr.forEach(element => {
     targetArray.push(cloneValue(element));
   });
-  return targetArray
+  return targetArray;
 };
 
 export default copyArray;

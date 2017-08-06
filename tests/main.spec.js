@@ -1,4 +1,4 @@
-require('depth-copy');
+require('../src/index.js');
 
 describe('depth copy', () => {
   it('should be done for simple objects', () => {
@@ -68,9 +68,9 @@ describe('depth copy', () => {
       var n = 10;
       var nClone = Object.depthCopy(n);
       expect(nClone).not.toBe(n);
-      expect(nClone).toEqual(n)
+      expect(nClone).toEqual(n);
 
-      var n = new Number(10);
+      var n = new Number(10.11);
       var nClone = Object.depthCopy(n);
       expect(nClone).not.toBe(n);
       expect(nClone).toEqual(n)
@@ -80,7 +80,7 @@ describe('depth copy', () => {
       var bool = false;
       var boolClone = Object.depthCopy(bool);
       expect(boolClone).not.toBe(bool);
-      expect(boolClone).toEqual(bool)
+      expect(boolClone).toEqual(bool);
 
       bool = new Boolean(false);
       boolClone = Object.depthCopy(bool);
@@ -92,7 +92,7 @@ describe('depth copy', () => {
       var foo = "foo";
       var foolClone = Object.depthCopy(foo);
       expect(foolClone).not.toBe(foo);
-      expect(foolClone).toEqual(foo)
+      expect(foolClone).toEqual(foo);
 
       var foo = new String("foo");
       var foolClone = Object.depthCopy(foo);

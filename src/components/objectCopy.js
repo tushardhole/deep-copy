@@ -5,7 +5,7 @@ const copyObject = (src) => {
   Object.keys(src).forEach(key => {
     dest[key] = cloneValue(src[key]);
   });
-  return dest
+  return dest;
 };
 
 export default copyObject;
