@@ -100,6 +100,18 @@ describe('depth copy', () => {
       expect(foolClone).toEqual(foo)
     });
 
+    it('should perform deep copy for Date type', () => {
+      var foo = new Date();
+      var foolClone = Object.depthCopy(foo);
+      expect(foolClone).not.toBe(foo);
+      expect(foolClone).toEqual(foo);
+
+      var foo = new Date();
+      var foolClone = Object.depthCopy(foo);
+      expect(foolClone).not.toBe(foo);
+      expect(foolClone).toEqual(foo)
+    });
+
     it('should perform shallow for Function/Unsupported type', () => {
       const foo = new Function();
       const fooClone = Object.depthCopy(foo);

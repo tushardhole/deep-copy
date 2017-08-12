@@ -4,7 +4,7 @@
   "description": "Utility to deep copy JS ES6 types",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest test",
+    "test": "npm run compile && jest test",
     "compile": "rimraf lib/* && babel src -d lib",
     "prepublish": "npm run compile",
     "lint": "eslint --ext .js  ./src"

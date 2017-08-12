@@ -3,6 +3,7 @@ import copyArray from "./components/arrayCopy";
 import copyNumber from "./components/numberCopy";
 import copyBoolean from "./components/booleanCopy";
 import copyString from "./components/stringCopy";
+import copyDate from "./components/dateCopy";
 
 const cloneValue = value => {
   switch (value.constructor) {
@@ -14,6 +15,8 @@ const cloneValue = value => {
       return copyBoolean(value);
     case String:
       return copyString(value);
+    case Date:
+      return copyDate(value);
     case Object:
       return copyObject(value);
     default:
