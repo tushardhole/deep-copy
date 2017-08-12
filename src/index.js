@@ -1,5 +1,7 @@
 import cloneValue from "./main";
 
-Object.prototype.depthCopy = src => {
+const esclone = src => {
   return cloneValue(src);
 };
+
+export default esclone;
