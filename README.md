@@ -26,9 +26,9 @@ Install esclone using,
 
 npm install --savedev esclone
 
-To use in any file add require,
+To use in any file add impport esclone,
 
-require('esclone');
+import esclone from "esclone";
 
 And then use,
 
@@ -46,11 +46,11 @@ And then use,
       father: rockysFather
     };
 
-    const rockyClone = Object.depthCopy(rocky);
+    const rockyClone = esclone(rocky);
 
 ### Installing
 
-npm install esclone
+npm install --savedev esclone
 
 ## Running the tests
 
