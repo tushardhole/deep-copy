@@ -2,11 +2,9 @@ require('../src/index.js');
 
 describe('depth copy', () => {
 
-  const verifyDeepCopyForType = (Type) => {
-    var foo = new Type();
-    var foolClone = Object.depthCopy(foo);
-    expect(foolClone).not.toBe(foo);
-    expect(foolClone).toEqual(foo)
+  const verifyDeepCopy = (foo, fooClone) => {
+    expect(fooClone).not.toBe(foo);
+    expect(fooClone).toEqual(foo)
   };
 
   it('should be done for simple objects', () => {
@@ -73,39 +71,76 @@ describe('depth copy', () => {
 
   describe("individual for data types", () => {
     it('should perform deep copy for Number type', () => {
-      var n = 10;
-      var nClone = Object.depthCopy(n);
+      let n = 10;
+      let nClone = Object.depthCopy(n);
       expect(nClone).not.toBe(n);
       expect(nClone).toEqual(n);
 
-      verifyDeepCopyForType(Boolean);
+      n = new Number(10.12);
+      nClone = Object.depthCopy(n);
+      verifyDeepCopy(n, nClone);
     });
 
     it('should perform deep copy for Boolean type', () => {
-      var bool = false;
-      var boolClone = Object.depthCopy(bool);
+      let bool = false;
+      let boolClone = Object.depthCopy(bool);
       expect(boolClone).not.toBe(bool);
       expect(boolClone).toEqual(bool);
 
-      verifyDeepCopyForType(Boolean);
+      bool = new Boolean(false);
+      boolClone = Object.depthCopy(bool);
+      verifyDeepCopy(bool, boolClone);
     });
 
     it('should perform deep copy for String type', () => {
-      var foo = "foo";
-      var foolClone = Object.depthCopy(foo);
-      expect(foolClone).not.toBe(foo);
-      expect(foolClone).toEqual(foo);
+      let foo = "foo";
+      let fooClone = Object.depthCopy(foo);
+      expect(fooClone).not.toBe(foo);
+      expect(fooClone).toEqual(foo);
 
-      verifyDeepCopyForType(String);
+      foo = new String("foo");
+      fooClone = Object.depthCopy(foo);
+      verifyDeepCopy(foo, fooClone);
     });
 
     it('should perform deep copy for Date type', () => {
-      verifyDeepCopyForType(Date)
+      const foo = new Date();
+      foo.setYear(2050);
+      const fooClone = Object.depthCopy(foo);
+      verifyDeepCopy(foo, fooClone);
     });
 
-    it('should perform shallow for Function/Unsupported type', () => {
-      const foo = new Function();
+    it('should perform deep copy for Set type', () => {
+      const foo = new Set();
+      foo.add(10);
+      foo.add(10);
       const fooClone = Object.depthCopy(foo);
+      verifyDeepCopy(foo, fooClone);
+    });
+
+    it('should perform deep copy for Map type', () => {
+      const foo = new Map();
+      foo.set("k", 10);
+      foo.set("l", 12);
+      const fooClone = Object.depthCopy(foo);
+      verifyDeepCopy(foo, fooClone);
+    });
+
+    it('should perform shallow for Unsupported types', () => {
+      let foo = new Function();
+      let fooClone = Object.depthCopy(foo);
+      expect(fooClone).toBe(foo);
+
+      foo = new WeakMap();
+      foo.set(new String("k"), 10);
+      foo.set(new String("l"), 12);
+      fooClone = Object.depthCopy(foo);
+      expect(fooClone).toBe(foo);
+
+      foo = new WeakSet();
+      foo.add(new Number(10));
+      foo.add(new Number(10));
+      fooClone = Object.depthCopy(foo);
       expect(fooClone).toBe(foo);
     })
   });
