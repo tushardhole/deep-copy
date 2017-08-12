@@ -1,6 +1,14 @@
 require('../src/index.js');
 
 describe('depth copy', () => {
+
+  const verifyDeepCopyForType = (Type) => {
+    var foo = new Type();
+    var foolClone = Object.depthCopy(foo);
+    expect(foolClone).not.toBe(foo);
+    expect(foolClone).toEqual(foo)
+  };
+
   it('should be done for simple objects', () => {
     const rockysGrandFather = {
       name: "Rockys grand father",
@@ -70,10 +78,7 @@ describe('depth copy', () => {
       expect(nClone).not.toBe(n);
       expect(nClone).toEqual(n);
 
-      var n = new Number(10.11);
-      var nClone = Object.depthCopy(n);
-      expect(nClone).not.toBe(n);
-      expect(nClone).toEqual(n)
+      verifyDeepCopyForType(Boolean);
     });
 
     it('should perform deep copy for Boolean type', () => {
@@ -82,10 +87,7 @@ describe('depth copy', () => {
       expect(boolClone).not.toBe(bool);
       expect(boolClone).toEqual(bool);
 
-      bool = new Boolean(false);
-      boolClone = Object.depthCopy(bool);
-      expect(boolClone).not.toBe(bool);
-      expect(boolClone).toEqual(bool)
+      verifyDeepCopyForType(Boolean);
     });
 
     it('should perform deep copy for String type', () => {
@@ -94,22 +96,11 @@ describe('depth copy', () => {
       expect(foolClone).not.toBe(foo);
       expect(foolClone).toEqual(foo);
 
-      var foo = new String("foo");
-      var foolClone = Object.depthCopy(foo);
-      expect(foolClone).not.toBe(foo);
-      expect(foolClone).toEqual(foo)
+      verifyDeepCopyForType(String);
     });
 
     it('should perform deep copy for Date type', () => {
-      var foo = new Date();
-      var foolClone = Object.depthCopy(foo);
-      expect(foolClone).not.toBe(foo);
-      expect(foolClone).toEqual(foo);
-
-      var foo = new Date();
-      var foolClone = Object.depthCopy(foo);
-      expect(foolClone).not.toBe(foo);
-      expect(foolClone).toEqual(foo)
+      verifyDeepCopyForType(Date)
     });
 
     it('should perform shallow for Function/Unsupported type', () => {
@@ -118,4 +109,5 @@ describe('depth copy', () => {
       expect(fooClone).toBe(foo);
     })
   });
+
 });
