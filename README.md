@@ -21,9 +21,7 @@ All other types will be shallow copied.
 
 1. Node 5.4.0 and greater
 
-```
-Give examples
-```
+## Example
 Install esclone using,
 
 npm install --savedev esclone

@@ -1,5 +1,5 @@
 {
-  "name": "depth-copy",
+  "name": "esclone",
   "version": "1.0.1",
   "description": "Utility to deep copy JS ES6 types",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js  ./src"
   },
   "author": "Tushar Dhole",
-  "license": "ISC",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/tushardhole/deep-copy.git"
