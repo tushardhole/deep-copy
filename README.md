@@ -1,6 +1,6 @@
 # ESCLONE
 
-A utility to deep copy ES6 types. Following are the supported types,
+An utility to deep copy ES6 types. Following are the supported types,
 1. Json Object
 2. Number
 3. String
@@ -21,16 +21,16 @@ All other types will be shallow copied.
 
 1. Node 5.4.0 and greater
 
-## Example
+## Example use in ES6
 Install esclone using,
+    
+    npm install --savedev esclone
 
-npm install --savedev esclone
+To use in any file add import for esclone as below,
+    
+    import esclone from "esclone";
 
-To use in any file add impport esclone,
-
-import esclone from "esclone";
-
-And then use,
+And then use in code as below,
 
     const rockysGrandFather = {
       name: "Rockys grand father",
@@ -47,6 +47,19 @@ And then use,
     };
 
     const rockyClone = esclone(rocky);
+    
+## Example use in ES5
+Install esclone using,
+    
+    npm install --savedev esclone
+
+And then use in code as below,
+
+    var esclone = require("esclone")
+    var foo = new String("abcd")
+    var fooClone = esclone.default(foo)
+    console.log(fooClone)
+    console.log(foo === fooClone)
 
 ### Installing
 
