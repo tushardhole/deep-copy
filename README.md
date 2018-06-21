@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/tushardhole/deep-copy.svg?branch=master)](https://travis-ci.org/tushardhole/deep-copy)
 # ESCLONE
 
 An utility to deep copy ES6 types. Following are the supported types,
