@@ -28,26 +28,28 @@ Install esclone using,
     npm install --savedev esclone
 
 To use in any file add import for esclone as below,
-    
-    import esclone from "esclone";
+```javascript    
+import esclone from "esclone";
+```
 
 And then use in code as below,
+```javascript
+const rockysGrandFather = {
+  name: "Rockys grand father",
+  father: "Don't know :("
+};
+const rockysFather = {
+  name: "Rockys Father",
+  father: rockysGrandFather
+};
 
-    const rockysGrandFather = {
-      name: "Rockys grand father",
-      father: "Don't know :("
-    };
-    const rockysFather = {
-      name: "Rockys Father",
-      father: rockysGrandFather
-    };
+const rocky = {
+  name: "Rocky",
+  father: rockysFather
+};
 
-    const rocky = {
-      name: "Rocky",
-      father: rockysFather
-    };
-
-    const rockyClone = esclone(rocky);
+const rockyClone = esclone(rocky);
+```
     
 ## Example use in ES5
 Install esclone using,
@@ -55,30 +57,27 @@ Install esclone using,
     npm install --savedev esclone
 
 And then use in code as below,
-
-    var esclone = require("esclone")
-    var foo = new String("abcd")
-    var fooClone = esclone.default(foo)
-    console.log(fooClone)
-    console.log(foo === fooClone)
+```javascript
+var esclone = require("esclone")
+var foo = new String("abcd")
+var fooClone = esclone.default(foo)
+console.log(fooClone)
+console.log(foo === fooClone)
+```
 
 ### Installing
 
-npm install --savedev esclone
+    npm install --savedev esclone
 
 ## Running the tests
 
-npm run test
+    npm run test
 
 ### Running lint
-/node_modules/eslint/bin/eslint.js --ext .js  ./src
+    /node_modules/eslint/bin/eslint.js --ext .js  ./src
 
 ### Running lint in auto fix moed
-/node_modules/eslint/bin/eslint.js --ext .js  ./src --fix
-
-## Authors
-
-Tushar Dhole
+    /node_modules/eslint/bin/eslint.js --ext .js  ./src --fix
 
 ## License
 
